@@ -13,6 +13,8 @@ spring:
     url: ${URL}
     username: ${USERNAME}
     password: ${PASSWORD}
+    hikari:
+      maximum-pool-size: 50
   # JPA properties
   jpa:
     hibernate:
