@@ -3,6 +3,7 @@ package com.example.springservice.controller;
 import com.example.springservice.repository.todoRepo;
 import com.example.springservice.model.todo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class todoController {
     @GetMapping("/")
     public ResponseEntity<Response> getAllTodos() {
         Response response = new Response();
-        response.setData(todorepo.findAll());
+        response.setData(todorepo.findAll(Sort.by(Sort.Direction.DESC, "lastTouchedAt")));
         return ResponseEntity.ok(response);
     }
 
